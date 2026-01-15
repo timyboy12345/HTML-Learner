@@ -1,13 +1,20 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import tailwindcss from "@tailwindcss/vite";
+
 export default defineNuxtConfig({
     compatibilityDate: '2025-07-15',
     devtools: {enabled: true},
-    modules: ['@nuxt/eslint', '@nuxt/fonts', '@nuxt/icon', '@nuxtjs/tailwindcss', 'nuxt-directus'],
+    modules: ['@nuxt/eslint', '@nuxt/fonts', '@nuxt/icon', 'nuxt-directus'],
 
     // Directus configuration
     runtimeConfig: {
         public: {
-            url: process.env.DIRECTUS_URL || 'https://your-directus-instance.com'
+            url: 'https://your-directus-instance.com OR NUXT_PUBLIC_DIRECTUS_URL'
         }
-    }
+    },
+
+    vite: {
+        plugins: [tailwindcss()],
+    },
+    css: ["./app/tailwind.css"],
 })

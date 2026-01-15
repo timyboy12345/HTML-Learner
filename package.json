@@ -14,17 +14,19 @@
     "@nuxt/eslint": "1.12.1",
     "@nuxt/fonts": "0.12.1",
     "@nuxt/icon": "2.2.0",
+    "@tailwindcss/vite": "^4.1.18",
+    "daisyui": "^5.5.14",
     "directus": "^11.14.1",
     "eslint": "^9.39.2",
     "nuxt": "^4.2.2",
     "nuxt-directus": "5.7.0",
-    "vue": "^3.5.26",
-    "vue-router": "^4.6.4"
+    "tailwindcss": "^4.1.18",
+    "vue": "^3.5.24",
+    "vue-router": "^4.6.3"
   },
   "packageManager": "pnpm@10.11.1+sha512.e519b9f7639869dc8d5c3c5dfef73b3f091094b0a006d7317353c72b124e80e1afd429732e28705ad6bfa1ee879c1fce46c128ccebd3192101f43dd67c667912",
   "devDependencies": {
-    "@nuxtjs/tailwindcss": "^6.14.0",
-    "@tailwindcss/forms": "^0.5.11",
+    "@unhead/vue": "1.11.20",
     "esbuild": "0.19.12"
   },
   "pnpm": {

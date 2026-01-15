@@ -1,15 +1,21 @@
 <template>
   <div>
     <form class="flex flex-col gap-4" @submit="handleSubmit">
-      <div class="flex flex-col">
-        <label for="email">Email</label>
-        <input type="email" name="email" id="email" v-model="email">
-      </div>
+      <fieldset class="w-full fieldset">
+        <legend class="fieldset-legend">Email</legend>
+        <input v-model="email" type="email" class="w-full input" placeholder="Email-adres" />
+        <p class="label">Het emailadres dat je hebt gebruikt bij registratie</p>
+      </fieldset>
 
-      <div class="flex flex-col">
-        <label for="password">Wachtwoord</label>
-        <input type="password" name="password" id="password" v-model="password">
-      </div>
+      <fieldset class="w-full fieldset">
+        <legend class="fieldset-legend">Wachtwoord</legend>
+        <input v-model="password" type="password" class="w-full input" placeholder="Wachtwoord" />
+        <p class="label">Het wachtwoord dat je hebt ingesteld bij registratie</p>
+      </fieldset>
+
+      <button type="submit" class="btn">
+        Inloggen
+      </button>
     </form>
   </div>
 </template>

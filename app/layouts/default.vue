@@ -9,7 +9,7 @@
       </div>
     </div>
 
-    <div class="mt-14 mx-4 w-full lg:max-w-4xl lg:mx-auto">
+    <div class="mt-14 mx-4 lg:w-full lg:max-w-4xl lg:mx-auto">
       <slot/>
     </div>
   </div>
