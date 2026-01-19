@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-row divide-x divide-gray-800 h-full">
     <div class="w-full p-4 relative">
-      <div class="bg-white rounded p-4 mb-4 prose prose-sm" v-if="substep.content" v-html="substep.content"/>
+      <div class="bg-white rounded p-4 mb-4 prose prose-sm" v-if="slide.content" v-html="slide.content"/>
       <textarea
           v-model="htmlContent"
           class="w-full text-white p-4 font-[Source_Code_Pro] resize-none rounded focus:outline-none"
@@ -9,8 +9,10 @@
           @input="debouncedUpdate"
       />
 
-      <button @click="resetInput()" type="button"
-              class="cursor-pointer rounded bg-orange-600 py-1 px-2 text-sm text-white absolute left-4 bottom-4">
+      <button
+          v-if="slide.preset"
+          @click="resetInput()" type="button"
+          class="cursor-pointer rounded bg-orange-600 py-1 px-2 text-sm text-white absolute left-4 bottom-4">
         Reset
       </button>
     </div>
@@ -27,7 +29,7 @@
 import {useDebounceFn} from '@vueuse/core'
 
 definePageMeta({middleware: ["auth"], layout: "learner"})
-const {substep} = defineProps(['substep'])
+const {slide} = defineProps(['slide'])
 
 const route = useRoute();
 const htmlContent = ref('');
@@ -43,11 +45,11 @@ const sanitizedContent = computed(() => {
 });
 
 function resetInput() {
-  htmlContent.value = substep.preset;
+  htmlContent.value = slide.preset;
   debouncedUpdate();
 }
 
-if (substep.preset) {
+if (slide.preset) {
   resetInput();
 }
 </script>
