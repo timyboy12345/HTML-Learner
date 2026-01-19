@@ -29,7 +29,7 @@
 </template>
 
 <script setup lang="ts">
-import {LearnerContentTypesEditor, LearnerContentTypesText} from '#components'
+import {LearnerContentTypesEditor, LearnerContentTypesText, LearnerContentTypesLearn} from '#components'
 import {useContentStore} from "~/store/contentStore";
 import {ref} from 'vue'
 import type {Course} from "~/store/contentStore";
@@ -60,13 +60,6 @@ if (fetchedCourses.value && fetchedCourses.value.length > 0) {
   course.value = fetchedCourses.value[0];
 }
 
-// const hasContent = computed(() => {
-//   const subcourse = content.getSubCourseBySlug(route.params.theme_slug, route.params.chapter_slug)
-//   if (!subcourse) return false;
-//   if (!subcourse.content) return false;
-//   return subcourse.content.length > 0;
-// });
-
 function type() {
   if (!course.value) return;
 
@@ -75,6 +68,8 @@ function type() {
       return LearnerContentTypesEditor;
     case 'learner_slide_type_text':
       return LearnerContentTypesText;
+    case 'learner_slide_type_learn':
+      return LearnerContentTypesLearn;
   }
 }
 
@@ -86,7 +81,7 @@ function handleNextStep() {
   if (numberOfSubSteps - 1 > step.value) {
     step.value++;
   } else {
-    console.log(`Next step not possible (going to ${step.value + 1} from ${numberOfSubSteps})`)
+    console.log(`Next step not possible (going to ${step.value + 1}, but there are ${numberOfSubSteps} (${numberOfSubSteps - 1}) pages)`)
   }
 }
 </script>

@@ -25,6 +25,7 @@
       <div v-if="user">
         <div class="opacity-60 text-sm">Welkom {{ user.first_name }}</div>
         <NuxtLink href="/learner/account">Jouw Account</NuxtLink>
+        <NuxtLink href="/" class="opacity-60 text-xs mt-2 block">Naar de homepagina</NuxtLink>
       </div>
     </div>
 

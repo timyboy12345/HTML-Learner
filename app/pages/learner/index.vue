@@ -11,14 +11,14 @@
               v-for="(m, i) in content.modules"
               :key="i"
               :href="`/learner/${m.slug}`"
-              class="flex flex-row flex-grow ml-0 hover:ml-4 transition-all duration-100"
+              class="flex flex-row flex-grow items-start group transition-all duration-100"
           >
             <div class="flex flex-col items-center">
-              <div class="size-8 rounded-full bg-orange-600"/>
+              <div class="size-8 rounded-full group-hover:bg-orange-700 transition duration-100 bg-orange-600"/>
               <div v-if="i !== content.modules.length - 1" class="bg-gray-200 my-2 h-6 w-1 rounded-full flex-grow"/>
             </div>
 
-            <div class="mt-1 ml-2">{{ m.name }}</div>
+            <div class="ml-2 group-hover:border-gray-200 border-1 border-transparent rounded py-1 px-2">{{ m.name }}</div>
           </NuxtLink>
         </div>
       </card>

@@ -11,5 +11,4 @@
 
 <script setup lang="ts">
 defineProps(['slide'])
-
 </script>
