@@ -4,7 +4,7 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineNuxtConfig({
     compatibilityDate: '2025-07-15',
     devtools: {enabled: true},
-    modules: ['@nuxt/eslint', '@nuxt/fonts', '@nuxt/icon', 'nuxt-directus'],
+    modules: ['@nuxt/eslint', '@nuxt/fonts', '@nuxt/icon', 'nuxt-directus', '@pinia/nuxt'],
 
     // Directus configuration
     runtimeConfig: {
@@ -12,6 +12,8 @@ export default defineNuxtConfig({
             url: 'https://your-directus-instance.com OR NUXT_PUBLIC_DIRECTUS_URL'
         }
     },
+
+    directus: {autoFetch: true, autoRefresh: true},
 
     vite: {
         plugins: [tailwindcss()],
