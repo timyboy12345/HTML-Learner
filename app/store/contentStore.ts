@@ -41,14 +41,15 @@ export const useContentStore = defineStore('content', {
 })
 
 export interface Module {
-    id: string;
+    id: string
     name: string
+    description: string
     slug: string
     courses: Course[]
 }
 
 export interface Course {
-    id: string;
+    id: string
     name: string
     slug: string
     slides: any[]

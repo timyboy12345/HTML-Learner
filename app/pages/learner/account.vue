@@ -1,8 +1,10 @@
 <template>
   <div>
-    <h1 class="text-xl mb-4">Jouw Account</h1>
+    <div class="w-full border-b border-gray-200 py-2 px-4 font-[IBM_Plex_Mono] text-2xl">
+      Jouw Account
+    </div>
 
-    <div class="grid grid-cols-3 gap-4">
+    <div class="grid gap-4 m-4 grid-cols-2">
       <card title="Jouw Gegevens">
         <p>Naam: {{ user.first_name }}</p>
         <p>Email: {{ user.email }}</p>

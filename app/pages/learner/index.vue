@@ -6,21 +6,25 @@
 
     <div class="grid gap-4 m-4">
       <card title="Jouw Voortgang">
-        <div class="flex flex-col">
+        <div class="flex flex-col -m-4 divide-y divide-gray-200">
           <NuxtLink
               v-for="(m, i) in content.modules"
               :key="i"
               :href="`/learner/${m.slug}`"
-              class="flex flex-row flex-grow items-start group transition-all duration-100"
+              class="px-4 py-2 relative flex flex-col hover:bg-gray-100 transition-all duration-100"
           >
-            <div class="flex flex-col items-center">
-              <div class="size-8 rounded-full group-hover:bg-orange-700 transition duration-100 bg-orange-600"/>
-              <div v-if="i !== content.modules.length - 1" class="bg-gray-200 my-2 h-6 w-1 rounded-full flex-grow"/>
+            <div class="flex flex-row items-center">
+              <Icon class="text-gray-400 mr-1.5" name="material-symbols:lock-open-rounded"></Icon>
+              {{ m.name }}
             </div>
-
-            <div class="ml-2 group-hover:border-gray-200 border-1 border-transparent rounded py-1 px-2">{{ m.name }}</div>
+            <div class="text-sm text-gray-600">{{ m.description }}</div>
           </NuxtLink>
         </div>
+      </card>
+
+      <card title="Hoe werkt het?">
+        <p>Kies hierboven de module die je wilt volgen</p>
+        <p>Test</p>
       </card>
     </div>
   </div>

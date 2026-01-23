@@ -4,7 +4,7 @@
       <div>
         <div class="w-full bg-orange-600 h-1 absolute left-0 top-0"></div>
         <NuxtLink href="/learner"
-                  class="font-[IBM_Plex_Mono] text-2xl mb-2 font-bold hover:opacity-90 transition duration-100">
+                  class="font-[IBM_Plex_Mono] text-2xl mb-2 font-bold hover:text-gray-700 transition duration-100">
           Learner
         </NuxtLink>
 

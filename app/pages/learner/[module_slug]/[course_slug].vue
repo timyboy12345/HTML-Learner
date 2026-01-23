@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-full overflow-y-scroll bg-gray-900" v-if="isFinished">
+  <div v-if="isFinished" class="w-full h-full overflow-y-scroll bg-gray-900">
     <div class="p-4 flex flex-col gap-4">
       <div class="prose p-4 bg-white rounded max-w-none">
         <h1>Gefinisht</h1>
@@ -7,17 +7,21 @@
           volgende cursus.</p>
       </div>
 
-      <button @click="saveProgress" type="button" :class="{'bg-orange-600 hover:bg-orange-700 cursor-pointer': !isSaving}" class="text-white rounded text-lg text-center py-2 w-full">
+      <button type="button" :class="{'bg-orange-600 hover:bg-orange-700 cursor-pointer': !isSaving}"
+              class="text-white rounded text-lg text-center py-2 w-full" @click="saveProgress">
         Doorgaan
       </button>
     </div>
   </div>
 
   <div v-else-if="course" class="w-full h-full overflow-y-scroll bg-gray-900">
-    <component :is="type()"
-               v-if="course && course.slides.length > 0"
-               :slide="course.slides[step].item"
-               @nextStep="handleNextStep()"/>
+    <component
+        :is="type()"
+        v-if="course && course.slides.length > 0"
+        :slide="course.slides[step].item"
+        :slide-id="course.slides[step]"
+        @next-step="handleNextStep()"
+    />
 
     <div v-else class="p-4">
       <div class="bg-white rounded p-4 prose max-w-none">
