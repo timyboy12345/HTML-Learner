@@ -1,5 +1,19 @@
 <template>
-  <div v-if="course" class="w-full h-full bg-gray-900">
+  <div class="w-full h-full overflow-y-scroll bg-gray-900" v-if="isFinished">
+    <div class="p-4 flex flex-col gap-4">
+      <div class="prose p-4 bg-white rounded max-w-none">
+        <h1>Gefinisht</h1>
+        <p>Je hebt het einde van deze cursus gehaald, lekker bezig! Klik op de knop hieronder om verder te gaan naar de
+          volgende cursus.</p>
+      </div>
+
+      <button @click="saveProgress" type="button" :class="{'bg-orange-600 hover:bg-orange-700 cursor-pointer': !isSaving}" class="text-white rounded text-lg text-center py-2 w-full">
+        Doorgaan
+      </button>
+    </div>
+  </div>
+
+  <div v-else-if="course" class="w-full h-full overflow-y-scroll bg-gray-900">
     <component :is="type()"
                v-if="course && course.slides.length > 0"
                :slide="course.slides[step].item"
@@ -43,6 +57,8 @@ const route = useRoute();
 const content = useContentStore();
 const course: Ref<null | Course> = ref(null);
 const step = ref(0);
+const isFinished = ref(false);
+const isSaving = ref(false);
 
 const {
   data: fetchedCourses,
@@ -81,7 +97,14 @@ function handleNextStep() {
   if (numberOfSubSteps - 1 > step.value) {
     step.value++;
   } else {
-    console.log(`Next step not possible (going to ${step.value + 1}, but there are ${numberOfSubSteps} (${numberOfSubSteps - 1}) pages)`)
+    isFinished.value = true;
   }
+}
+
+function saveProgress() {
+  if (isSaving.value) return;
+
+  isSaving.value = true;
+  refresh().then(() => isSaving.value = false);
 }
 </script>

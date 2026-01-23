@@ -8,14 +8,15 @@
       <card title="Jouw Voortgang van deze module">
         <div v-if="module.courses && module.courses.length > 0" class="flex flex-col divide-y divide-gray-200 -m-4">
           <NuxtLink
-              v-for="(c, i) in module.courses"
+              v-for="c in module.courses"
               :key="c.slug"
               :href="`/learner/${module.slug}/${c.slug}`"
-              class="flex flex-row items-center py-2 px-4 hover:bg-gray-100 transition duration-100">
+              class="flex flex-row items-center py-2 px-4 hover:bg-gray-100 transition duration-100"
+          >
             <div
-                class="size-2 rounded mr-2" :class="{
-              'bg-gray-300': i > 2,
-              'bg-orange-600': i <= 2
+                class="size-2 rounded mr-2 bg-gray-300" :class="{
+              'bg-green-500': content.courseState(c.id) === 'finished',
+              'bg-orange-600': content.courseState(c.id) === 'in_progress',
             }"/>
             <div>{{ c.name }}</div>
           </NuxtLink>

@@ -1,6 +1,6 @@
 <template>
-  <div v-if="!pending" class="flex flex-row w-full h-screen color-gray-900">
-    <div class="w-[250px] min-w-[250px] relative bg-white border-r border-gray-200 p-2 flex flex-col justify-between">
+  <div v-if="!learnerPending || progressPending" class="flex flex-row w-full h-screen color-gray-900">
+    <div class="w-[250px] min-w-[250px] fixed left-0 top-0 h-screen bg-white border-r border-gray-200 p-2 flex flex-col justify-between">
       <div>
         <div class="w-full bg-orange-600 h-1 absolute left-0 top-0"></div>
         <NuxtLink href="/learner"
@@ -29,7 +29,7 @@
       </div>
     </div>
 
-    <div class="flex-grow">
+    <div class="flex-grow ml-[250px]">
       <slot/>
     </div>
   </div>
@@ -47,11 +47,12 @@ const route = useRoute();
 const content = useContentStore();
 
 const {getItems} = useDirectusItems();
+
 const {
-  data: myCollection,
-  pending,
-  error,
-  refresh,
+  data: learnerData,
+  pending: learnerPending,
+  error: learnerError,
+  refresh: learnerRefresh,
 } = await useAsyncData("modules", () =>
     getItems({
       collection: 'learner_module',
@@ -59,7 +60,19 @@ const {
     })
 );
 
-content.$patch({modules: myCollection.value ?? []});
+const {
+  data: progressData,
+  pending: progressPending,
+  error: progressError,
+  refresh: progressRefresh,
+} = await useAsyncData("progress", () =>
+    getItems({
+      collection: 'learner_progress',
+      params: {fields: ['*'], filter: {user: user.value.id}},
+    })
+);
+
+content.$patch({modules: learnerData.value ?? [], progress: progressData.value ?? []});
 </script>
 
 <style>

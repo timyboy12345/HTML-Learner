@@ -16,7 +16,6 @@
     "@pinia/nuxt": "0.11.3",
     "@tailwindcss/vite": "^4.1.18",
     "@vueuse/core": "^14.1.0",
-    "daisyui": "^5.5.14",
     "directus": "^11.14.1",
     "nuxt": "^4.2.2",
     "nuxt-directus": "5.7.0",

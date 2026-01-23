@@ -33,8 +33,8 @@
         Volgende stap
       </button>
 
-      <div v-show="!canContinue" class="transition duration-100 text-gray-400 text-xs text-center">Je moet eerst alle
-        vragen goed hebben beantwoord, voor je door kan gaan
+      <div v-show="!canContinue" class="transition duration-100 text-gray-400 text-xs text-center">
+        Je moet eerst alle vragen goed hebben beantwoord, voor je door kan gaan
       </div>
     </div>
   </div>

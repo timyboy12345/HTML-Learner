@@ -4,6 +4,7 @@ export const useContentStore = defineStore('content', {
     state: () => {
         return {
             modules: null as null | Module[],
+            progress: null as null | any[],
         }
     },
     getters: {
@@ -25,16 +26,29 @@ export const useContentStore = defineStore('content', {
                 ? state.modules.filter((m) => m.slug === moduleSlug).length > 0
                 : null
         },
+        courseState: (state) => {
+            return (courseId: string) => {
+                const progress = (state.progress ?? []).find((p) => p.course === courseId);
+
+                if (!progress) {
+                    return false
+                }
+
+                return progress.state;
+            }
+        }
     },
 })
 
 export interface Module {
+    id: string;
     name: string
     slug: string
     courses: Course[]
 }
 
 export interface Course {
+    id: string;
     name: string
     slug: string
     slides: any[]
